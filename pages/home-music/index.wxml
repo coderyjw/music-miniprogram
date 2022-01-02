@@ -1,0 +1,21 @@
+<!--pages/home-music/idnex.wxml-->
+<van-search 
+  value="{{ value }}" 
+  placeholder="搜索你喜欢的歌曲"
+  background="#fafafa"
+  shape="round"
+  disabled
+  bind:click-input="handleSearchClick"
+/>
+
+
+<swiper class="swiper" 	indicator-dots style="height: {{ swiperHeight }}px" autoplay>
+  <swiper-item wx:for="{{ bannerList }}" wx:key="bannerId"  class="swiper-item" >
+    <image 
+      bindload="hanldeImageLoad" 
+      class="swiper-image" 
+      src="{{ item.pic }}" 
+      mode="widthFix"
+    />
+  </swiper-item>
+</swiper>

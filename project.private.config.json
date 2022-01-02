@@ -1,0 +1,42 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "video",
+          "pathName": "pages/home-video/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "music",
+          "pathName": "pages/home-music/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "detail-video",
+          "pathName": "pages/detail-video/index",
+          "query": "id=14480854",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/detail-video/index",
+          "query": "id=D078D5719D91487879E70D4BB36D8DF8",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,10 @@
+<!--components/video-item-v2/index.wxml-->
+<view class="video-item-v2" bindtap="handleClickItem">
+  <image class="image" src="{{ item.coverUrl }}"></image>
+  <view class="right-wrapper">
+    <view class="video-name">
+      {{ item.title }}
+    </view>
+    <view class="artist-name">{{ item.creator[0].userName }}</view>
+  </view>
+</view>

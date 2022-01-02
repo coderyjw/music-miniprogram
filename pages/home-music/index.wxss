@@ -1,0 +1,16 @@
+/* pages/home-music/idnex.wxss */
+.van-search__content {
+  background-color: #fff !important;
+}
+
+.swiper-item .swiper-image {
+  width: 100%;
+}
+
+.swiper-item {
+  display: flex;
+}
+
+.swiper {
+}
+

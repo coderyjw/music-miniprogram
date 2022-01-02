@@ -1,0 +1,80 @@
+/* pages/detail-video/index.wxss */
+page {
+  padding-top: 225px;
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.video-wrapper {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+
+.detail-info {
+  height: 100%;
+  box-sizing: border-box;
+  overflow-y: scroll;
+  padding: 30rpx 20rpx;
+}
+
+.detail-info .video-info {
+  background-color: #fcfafa;
+}
+
+.detail-info .video-info .video-name {
+  font-size: 32rpx;
+  font-weight: 700;
+  margin-bottom: 10rpx;
+}
+
+.detail-info .video-info .artist-name,
+.detail-info .video-info .play-count-date {
+  font-size: 26rpx;
+  color: #7b7979;
+  margin-bottom: 10rpx;
+}
+
+.detail-info .title {
+  margin: 30rpx 0;
+  font-weight: 600;
+  font-size: 30rpx;
+}
+
+.video-item-v2 {
+  display: flex;
+  margin: 25rpx 0;
+}
+
+.video-item-v2 .image {
+  width: 230rpx;
+  height: 140rpx;
+  margin-right: 20rpx;
+  border-radius: 10rpx;
+}
+
+.video-item-v2 .right-wrapper {
+  width: calc(100% - 260rpx);
+}
+
+.video-item-v2 .right-wrapper .video-name {
+  font-weight: 600;
+  font-size: 26rpx;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.video-item-v2 .right-wrapper .artist-name {
+  font-size: 20rpx;
+  margin-top: 10rpx;
+}
+
+
+
+
