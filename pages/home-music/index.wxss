@@ -1,16 +1,33 @@
 /* pages/home-music/idnex.wxss */
+page {
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+
+.van-search {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
 .van-search__content {
   background-color: #fff !important;
 }
 
+
+/* 轮播图样式 */
+.swiper {
+  border-radius: 10rpx;
+  overflow: hidden;
+  /* 手机系统Webview 没有圆角适配 */
+  transform: translateY(0); 
+}
+
 .swiper-item .swiper-image {
   width: 100%;
+  
 }
 
 .swiper-item {
   display: flex;
-}
-
-.swiper {
 }
 

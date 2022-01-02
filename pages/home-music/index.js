@@ -41,15 +41,7 @@ Page({
       this.setData({ swiperHeight: rect.height }) 
       console.log(rect.height)
     })
-  }),
-  // hanldeImageLoad: function() {
-  //   // 获取图片高度
-  //   querySelect('.swiper-image').then(res => {
-  //     const rect = res[0]
-  //     this.setData({ swiperHeight: rect.height }) 
-  //     console.log(123)
-  //   })
-  // },
+  }, 1000),
 
   /**
    * 生命周期函数--监听页面初次渲染完成

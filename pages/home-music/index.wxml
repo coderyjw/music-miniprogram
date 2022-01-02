@@ -1,14 +1,16 @@
 <!--pages/home-music/idnex.wxml-->
+<!-- 1.搜索框 -->
 <van-search 
   value="{{ value }}" 
   placeholder="搜索你喜欢的歌曲"
   background="#fafafa"
   shape="round"
+  referrer-policy="origin"
   disabled
   bind:click-input="handleSearchClick"
 />
 
-
+<!-- 2.轮播图 -->
 <swiper class="swiper" 	indicator-dots style="height: {{ swiperHeight }}px" autoplay>
   <swiper-item wx:for="{{ bannerList }}" wx:key="bannerId"  class="swiper-item" >
     <image 
@@ -19,3 +21,14 @@
     />
   </swiper-item>
 </swiper>
+
+
+<!-- 3.推荐歌曲 -->
+<view class="recommend-song">
+  <area-header title="推荐歌曲"></area-header>
+  <view class="song-list">
+    <block wx:for="{{recommendSongs}}" wx:key="id">
+      <song-item-v1 item="{{item}}"></song-item-v1>
+    </block>
+  </view>
+</view>

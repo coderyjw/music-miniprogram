@@ -36,7 +36,6 @@ Page({
   },
 
   handleVideoItemClick(e) {
-    console.log(e, e.currentTarget.dataset.item.id)
     const id  = e.currentTarget.dataset.item.id
     wx.navigateTo({
       url: '/pages/detail-video/index?id=' + id,
