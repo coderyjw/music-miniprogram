@@ -1,17 +1,20 @@
 // pages/home-music/idnex.js
 import { getBanner } from '../../service/api_music'
-import querySelect from '../../utils/query-select'
+import queryRect from '../../utils/query-select'
 import throttle from '../../utils/throttle'
 
-Page({
+import { rankingStore } from '../../store/index'
 
+const throttleQueryRect = throttle(queryRect, 1000)
+Page({
   /**
    * 页面的初始数据
    */
   data: {
     value: "",
     bannerList: [],
-    swiperHeight: 0
+    swiperHeight: 0,
+    recommendSongs: {}
   },
 
   /**
@@ -19,6 +22,16 @@ Page({
    */
   onLoad: function (options) {
     this.getPageData()
+
+    // 发起共享数据的请求
+    rankingStore.dispatch("getRankingDataAction")
+
+    // 从store获取共享的数据
+    rankingStore.onState("hotRanking", (res) => {
+      if (!res.tracks) return
+      const recommendSongs = res.tracks.slice(0, 6)
+      this.setData({ recommendSongs })
+    })
   },
 
   getPageData() {
@@ -34,14 +47,13 @@ Page({
     })
   },
 
-  hanldeImageLoad: throttle(function() {
+  hanldeImageLoad() {
     // 获取图片高度
-    querySelect('.swiper-image').then(res => {
+    throttleQueryRect('.swiper-image').then(res => {
       const rect = res[0]
       this.setData({ swiperHeight: rect.height }) 
-      console.log(rect.height)
     })
-  }, 1000),
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

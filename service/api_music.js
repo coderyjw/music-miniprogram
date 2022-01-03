@@ -7,3 +7,10 @@ import request from './index'
 export function getBanner(type) {
   return request.get('/banner', { type })
 }
+
+export function getRankings(idx) {
+  return request.get("/top/list", {
+    idx
+  })
+}
+

@@ -25,7 +25,6 @@ Component({
       wx.navigateTo({
         url: '/pages/detail-video/index?id=' + this.data.item.vid,
       })
-      console.log(this.data.item)
     }
   }
 })
