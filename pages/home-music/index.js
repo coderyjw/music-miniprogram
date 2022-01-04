@@ -34,6 +34,10 @@ Page({
       const recommendSongs = res.tracks.slice(0, 6)
       this.setData({ recommendSongs })
     })
+
+    rankingStore.onState("newRanking", this.getRankingHandler(0))
+    rankingStore.onState("originRanking", this.getRankingHandler(2))
+    rankingStore.onState("upRanking", this.getRankingHandler(3))
   },
 
   getPageData() {
@@ -50,6 +54,22 @@ Page({
     getSongMenu("华语").then(res => {
       this.setData({ recommendSongMenu: res.playlists })
     })
+  },
+
+  getRankingHandler: function(idx) {
+    return (res) => {
+      if (Object.keys(res).length === 0) return
+      const name = res.name
+      const coverImgUrl = res.coverImgUrl
+      const playCount = res.playCount
+      const songList = res.tracks.slice(0, 3)
+      const rankingObj = {name, coverImgUrl, playCount, songList}
+      const newRankings = { ...this.data.rankings, [idx]: rankingObj}
+      this.setData({ 
+        rankings: newRankings
+      })
+      console.log(this.data.rankings)
+    }
   },
   handleSearchClick(e) {
     wx.navigateTo({
