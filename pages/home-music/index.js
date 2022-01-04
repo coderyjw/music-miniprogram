@@ -1,5 +1,5 @@
 // pages/home-music/idnex.js
-import { getBanner } from '../../service/api_music'
+import { getBanner, getSongMenu } from '../../service/api_music'
 import queryRect from '../../utils/query-select'
 import throttle from '../../utils/throttle'
 
@@ -11,10 +11,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    value: "",
-    bannerList: [],
     swiperHeight: 0,
-    recommendSongs: {}
+    banners: [],
+    hotSongMenu: [],
+    recommendSongMenu: [],
+    recommendSongs: [],
+    rankings: { 0: {}, 2: {}, 3: {} }
   },
 
   /**
@@ -39,6 +41,14 @@ Page({
       this.setData({
         bannerList: res.banners
       })
+    })
+
+    getSongMenu().then(res => {
+      this.setData({ hotSongMenu: res.playlists })
+    })
+
+    getSongMenu("华语").then(res => {
+      this.setData({ recommendSongMenu: res.playlists })
     })
   },
   handleSearchClick(e) {
