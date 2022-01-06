@@ -2,4 +2,14 @@ Page {
   background-color: #fafafa;
   /* padding-bottom: constant(safe-area-inset-bottom);
   padding-bottom: env(safe-area-inset-bottom); */
+  box-sizing: border-box;
+}
+
+.van-search {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.van-search__content {
+  background-color: #fff !important;
 }

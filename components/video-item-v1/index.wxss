@@ -20,7 +20,6 @@
   position: absolute;
   top: 161rpx;
   left: 0;
-  box-sizing: border-box;
   font-size: 22rpx;
   height: 46rpx;
   border-radius: 0 0 15rpx 15rpx;

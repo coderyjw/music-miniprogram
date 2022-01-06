@@ -13,13 +13,13 @@
     "miniprogram": {
       "list": [
         {
-          "name": "video",
+          "name": "home-video",
           "pathName": "pages/home-video/index",
           "query": "",
           "scene": null
         },
         {
-          "name": "music",
+          "name": "home-music",
           "pathName": "pages/home-music/index",
           "query": "",
           "scene": null
@@ -31,15 +31,15 @@
           "scene": null
         },
         {
-          "name": "",
-          "pathName": "pages/detail-video/index",
-          "query": "id=D078D5719D91487879E70D4BB36D8DF8",
+          "name": "detail-songs",
+          "pathName": "pages/detail-songs/index",
+          "query": "id=6954660951&type=menu",
           "scene": null
         },
         {
-          "name": "歌单详情",
-          "pathName": "pages/detail-songs/index",
-          "query": "id=6954660951&type=menu",
+          "name": "detail-search",
+          "pathName": "pages/detail-search/index",
+          "query": "",
           "scene": null
         }
       ]
