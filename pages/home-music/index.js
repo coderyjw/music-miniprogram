@@ -3,7 +3,7 @@ import { getBanner, getSongMenu } from '../../service/api_music'
 import queryRect from '../../utils/query-select'
 import throttle from '../../utils/throttle'
 
-import { rankingStore } from '../../store/index'
+import { rankingStore, rankingMap  } from '../../store/index'
 
 const throttleQueryRect = throttle(queryRect, 1000)
 Page({
@@ -68,9 +68,9 @@ Page({
       this.setData({ 
         rankings: newRankings
       })
-      console.log(this.data.rankings)
     }
   },
+
   handleSearchClick(e) {
     wx.navigateTo({
       url: '/pages/detail-search/index',
@@ -85,6 +85,21 @@ Page({
     })
   },
 
+  handleMoreClick: function() {
+    this.navigateToDetailSongsPage("hotRanking")
+  },
+
+  handleRankingItemClick(e) {
+    const idx = e.currentTarget.dataset.idx
+    const rankingName = rankingMap[idx]
+    this.navigateToDetailSongsPage(rankingName)
+  },
+
+  navigateToDetailSongsPage: function(rankingName) {
+    wx.navigateTo({
+      url: `/pages/detail-songs/index?ranking=${rankingName}&type=rank`,
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

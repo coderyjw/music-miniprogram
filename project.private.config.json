@@ -35,6 +35,12 @@
           "pathName": "pages/detail-video/index",
           "query": "id=D078D5719D91487879E70D4BB36D8DF8",
           "scene": null
+        },
+        {
+          "name": "歌单详情",
+          "pathName": "pages/detail-songs/index",
+          "query": "id=6954660951&type=menu",
+          "scene": null
         }
       ]
     }

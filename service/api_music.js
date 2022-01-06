@@ -27,4 +27,10 @@ export function getSongMenu(cat="全部", limit=6, offset=0) {
   })
 }
 
+export function getSongMenuDetail(id) {
+  return request.get("/playlist/detail/dynamic", {
+    id
+  })
+}
+
 

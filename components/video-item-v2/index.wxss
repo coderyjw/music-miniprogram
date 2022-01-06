@@ -9,7 +9,28 @@
   height: 140rpx;
   margin-right: 20rpx;
   border-radius: 10rpx;
+  position: relative;
 }
+
+.video-item-v2 .image .play-time {
+  position: absolute;
+  right: 10rpx;
+  bottom: 6rpx;
+  font-size: 22rpx;
+  color: #fff;
+}
+
+.video-item-v2 .image .play-time::before {
+  content: ' ';
+  width: 30rpx;
+  height: 30rpx;
+  position: absolute;
+  bottom: 0rpx;
+  left: -34rpx;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAaZJREFUWEftlz8vBUEUxX+nUvIFCC2FQqMRfAHR0Eh0epVK4bUKEhI+ABWNxBegUGgkClRCaCQa0amuzMvsy3jZP7O7j32FaWfvuWfOuXPnrmh4qeH8/BPoPwXM7AyYBEZr1sczcCtpMQ/nhwJmZjWTpoZLylS6s2FmJ8ASsAVcSrqoQ8bM5oBZj3cqaTkNLyTwAgwDE5Lu6yRPYs1sHLgDXiWNFBFoy58nVxVSia1ZuKECv0oAmAFWgDdJreQwf0ngCxjwic8lLbQVD/wqVMDLeQDsSHqMsaTrZrnCdsXZsboKARf/7kgAu5LcyTJXQGBa0nV3TYQEnjyzsSy0lD5x40kcF8UkRZhHoN35JLkOlrpyGlXmPe9OmEmggp9hyJGk1TSMaAJmtg4MhlekGzBFgStgT5LrormqxVjw4S0YKgIDHoB9SYdFypUpwtga2PTJP4uSu/3oaxgDVuWbgEBhI9r2FmxUSRRh2xSw1lgrjnmMkud4vu4skKhR9jlOBhLXr1t1SZQeSFIqtmelEDWSBbI1N5T27MglgPrvv6AE+Z58+q/AN7ES+SHv9gSiAAAAAElFTkSuQmCC');
+  background-size: 100% 100%;
+}
+
 
 .video-item-v2 .right-wrapper {
   width: calc(100% - 260rpx);
@@ -27,5 +48,5 @@
 
 .video-item-v2 .right-wrapper .artist-name {
   font-size: 20rpx;
-  margin-top: 10rpx;
+  margin-top: 20rpx;
 }
