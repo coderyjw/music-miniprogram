@@ -1,2 +1,25 @@
 <!--pages/songs-list/index.wxml-->
-<text>pages/songs-list/index.wxml</text>
+<view 
+  class="menus-list" 
+  wx:for="{{songMenuList}}" 
+  wx:key="cat"
+  wx:for-item="menuList"
+  wx:for-index="idx">
+  <area-header title="{{menuList.cat}}" showRight="{{false}}"></area-header>
+  <view class="menu-list">
+    <block 
+      wx:for="{{menuList.playlists}}" 
+      wx:key="id"
+      wx:for-item="menuItem"
+    >
+      <view class="menu-item">
+        <song-menu-item
+          item="{{menuItem}}"
+          data-item="{{menuItem}}"
+          bindtap="handleMenuItemClick"
+          >
+        </song-menu-item>
+      </view>
+    </block>
+  </view>
+</view>

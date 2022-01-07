@@ -41,6 +41,12 @@
           "pathName": "pages/detail-search/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "songs-list",
+          "pathName": "pages/songs-list/index",
+          "query": "type=hot",
+          "scene": null
         }
       ]
     }

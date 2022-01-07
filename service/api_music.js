@@ -33,4 +33,9 @@ export function getSongMenuDetail(id) {
   })
 }
 
+export function getHotSongsType() {
+  return request.get("/playlist/hot")
+}
+
+
 

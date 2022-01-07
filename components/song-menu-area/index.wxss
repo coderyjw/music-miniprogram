@@ -10,7 +10,6 @@
   display: inline-block;
   vertical-align: top;
   width: 220rpx;
-
   margin-left: 20rpx;
 }
 

@@ -34,9 +34,14 @@ Component({
       })
     },
     handleMoreClick: function(e) {
-      console.log({ e })
+      let type
+      if(this.data.title === '热门歌单') {
+        type = 'hot'
+      } else if(this.data.title === '推荐歌单') {
+        type = 'recommend'
+      }
       wx.navigateTo({
-        url: `/pages/songs-list/index?id=1`,
+        url: `/pages/songs-list/index?type=${type}`,
       })
     }
   }
