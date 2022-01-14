@@ -1,5 +1,5 @@
 // pages/detail-search/index.js
-import { getSearchHot, getSearchSuggest } from '../../service/api_search'
+import { getSearchHot, getSearchSuggest, getSearchResult } from '../../service/api_search'
 import debounce from '../../utils/debounce'
 import stringToNodes from '../../utils/string2nodes'
 
@@ -9,7 +9,8 @@ Page({
     hotKeywords: [],
     suggestSongs: [],
     suggestSongsNodes: [],
-    searchValue: ""
+    searchValue: "",
+    resultSongs: []
   },
   onLoad: function (options) {
     // 1.获取页面的数据
@@ -21,6 +22,7 @@ Page({
     getSearchHot().then(res => {
       this.setData({ hotKeywords: res.result.hots })
     })
+    getSearchResult('有何不可')
   },
 
   // 事件处理
@@ -52,5 +54,25 @@ Page({
       }
       this.setData({ suggestSongsNodes })
     })
+  },
+
+  handleSearchAction: function() {
+    // 保存一下searchValue
+
+    const searchValue = this.data.searchValue
+    getSearchResult(searchValue).then(res => {
+      this.setData({ resultSongs: res.result.songs })
+    })
+  },
+
+  handleKeywordItemClick: function(event) {
+    // 1.获取点击的关键字
+    const keyword = event.currentTarget.dataset.keyword
+
+    // 2.将关键设置到searchValue中
+    this.setData({ searchValue: keyword })
+
+    // 3.发送网络请求
+    this.handleSearchAction()
   }
 })
