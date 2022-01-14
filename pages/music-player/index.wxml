@@ -2,3 +2,12 @@
 <!-- 1.背景 -->
 <image class="bg-image" mode="aspectFill" src="{{currentSong.al.picUrl}}"></image>
 <view class="bg-cover"></view>
+
+<!-- 2.导航 -->
+<nav-bar>
+  <view slot="title" class="tab">
+    <view class="{{currentPage === 0 ? 'active': ''}}">歌曲</view>
+    <view class="divider">|</view>
+    <view class="{{currentPage === 1 ? 'active': ''}}">歌词</view>
+  </view>
+</nav-bar>
