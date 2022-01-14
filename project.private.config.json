@@ -47,6 +47,12 @@
           "pathName": "pages/songs-list/index",
           "query": "type=hot",
           "scene": null
+        },
+        {
+          "name": "播放页面",
+          "pathName": "pages/music-player/index",
+          "query": "id=1901371647",
+          "scene": null
         }
       ]
     }
