@@ -20,7 +20,8 @@ Page({
     currentPage: 0,
     contentHeight: 0,
     sliderValue: 0,
-    isSliderChanging: false
+    isSliderChanging: false,
+    lyricScrollTop: 0
   },
 
   /**
@@ -61,7 +62,6 @@ Page({
     getSongLyric(id).then(res => {
       const lyricString = res.lrc.lyric
       const lyrics = parseLyric(lyricString)
-      console.log(lyrics)
       this.setData({ lyricInfos: lyrics })
     })
   },
@@ -94,7 +94,7 @@ Page({
       const currentIndex = i - 1
       if (this.data.currentLyricIndex !== currentIndex) {
         const currentLyricInfo = this.data.lyricInfos[currentIndex]
-        this.setData({ currentLyricText: currentLyricInfo.text, currentLyricIndex: currentIndex })
+        this.setData({ currentLyricText: currentLyricInfo.text, currentLyricIndex: currentIndex,lyricScrollTop: currentIndex * 35 })
       }
     })
   },
