@@ -11,7 +11,8 @@ Page({
     currentSong: {},
 
     currentPage: 0,
-    contentHeight: 0
+    contentHeight: 0,
+    isMusicLyric: true,
   },
 
   /**
@@ -31,8 +32,8 @@ Page({
      const statusBarHeight = globalData.statusBarHeight
      const navBarHeight = globalData.navBarHeight
      const contentHeight = screenHeight - statusBarHeight - navBarHeight
-     console.log({screenHeight,statusBarHeight,navBarHeight,contentHeight})
-     this.setData({ contentHeight })
+    const deviceRadio = globalData.deviceRadio
+     this.setData({ contentHeight, isMusicLyric: deviceRadio >= 2  })
 
       // 4.创建播放器
     const audioContext = wx.createInnerAudioContext()
