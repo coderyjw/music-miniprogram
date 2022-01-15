@@ -1,6 +1,7 @@
 // pages/music-player/index.js
-import { getSongDetail } from '../../service/api_player'
+import { getSongDetail, getSongLyric } from '../../service/api_player'
 import { audioContext } from '../../store/index'
+import { parseLyric } from '../../utils/parse-lyric'
 
 Page({
 
@@ -12,11 +13,13 @@ Page({
     currentSong: {},
     currentTime: 0,
     durationTime: 0,
+    currentLyricIndex: 0,
+    currentLyricText: "",
 
+    isMusicLyric: true,
     currentPage: 0,
     contentHeight: 0,
     sliderValue: 0,
-    isMusicLyric: true,
     isSliderChanging: false
   },
 
@@ -37,7 +40,7 @@ Page({
      const statusBarHeight = globalData.statusBarHeight
      const navBarHeight = globalData.navBarHeight
      const contentHeight = screenHeight - statusBarHeight - navBarHeight
-    const deviceRadio = globalData.deviceRadio
+     const deviceRadio = globalData.deviceRadio
      this.setData({ contentHeight, isMusicLyric: deviceRadio >= 2  })
 
      // 4.使用audioContext播放歌曲
@@ -53,6 +56,13 @@ Page({
   getPageData: function(id) {
     getSongDetail(id).then(res => {
       this.setData({ currentSong: res.songs[0], durationTime: res.songs[0].dt })
+    })
+
+    getSongLyric(id).then(res => {
+      const lyricString = res.lrc.lyric
+      const lyrics = parseLyric(lyricString)
+      console.log(lyrics)
+      this.setData({ lyricInfos: lyrics })
     })
   },
 
@@ -72,20 +82,20 @@ Page({
         this.setData({ sliderValue, currentTime })
       }
 
-      // // 3.根据当前时间去查找播放的歌词
-      // let i = 0
-      // for (; i < this.data.lyricInfos.length; i++) {
-      //   const lyricInfo = this.data.lyricInfos[i]
-      //   if (currentTime < lyricInfo.time) {
-      //     break
-      //   }
-      // }
-      // // 设置当前歌词的索引和内容
-      // const currentIndex = i - 1
-      // if (this.data.currentLyricIndex !== currentIndex) {
-      //   const currentLyricInfo = this.data.lyricInfos[currentIndex]
-      //   this.setData({ currentLyricText: currentLyricInfo.text, currentLyricIndex: currentIndex })
-      // }
+      // 3.根据当前时间去查找播放的歌词
+      let i = 0
+      for (; i < this.data.lyricInfos.length; i++) {
+        const lyricInfo = this.data.lyricInfos[i]
+        if (currentTime < lyricInfo.time) {
+          break
+        }
+      }
+      // 设置当前歌词的索引和内容
+      const currentIndex = i - 1
+      if (this.data.currentLyricIndex !== currentIndex) {
+        const currentLyricInfo = this.data.lyricInfos[currentIndex]
+        this.setData({ currentLyricText: currentLyricInfo.text, currentLyricIndex: currentIndex })
+      }
     })
   },
 
