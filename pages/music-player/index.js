@@ -9,6 +9,7 @@ Page({
   data: {
     id: 0,
     currentSong: {},
+    durationTime: 0,
 
     currentPage: 0,
     contentHeight: 0,
@@ -44,7 +45,7 @@ Page({
   // 网络请求
   getPageData: function(id) {
     getSongDetail(id).then(res => {
-      this.setData({ currentSong: res.songs[0] })
+      this.setData({ currentSong: res.songs[0], durationTime: res.songs[0].dt })
     })
   },
 
