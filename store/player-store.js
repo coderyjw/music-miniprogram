@@ -21,6 +21,10 @@ const playerStore = new HYEventStore({
   },
   actions: {
     playMusicWithSongIdAction(ctx, { id }) {
+      if(ctx.id === id) {
+        this.dispatch("changeMusicPlayStatusAction", true)
+        return
+      }
       ctx.id = id
 
       // 0.修改播放的状态
@@ -82,8 +86,8 @@ const playerStore = new HYEventStore({
       })
     },
 
-    changeMusicPlayStatusAction(ctx) {
-      ctx.isPlaying = !ctx.isPlaying
+    changeMusicPlayStatusAction(ctx, isPlaying) {
+      ctx.isPlaying = isPlaying
       ctx.isPlaying ? audioContext.play(): audioContext.pause()
     }
   }

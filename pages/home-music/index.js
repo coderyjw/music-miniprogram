@@ -5,7 +5,7 @@ import throttle from '../../utils/throttle'
 
 import { rankingStore, rankingMap  } from '../../store/index'
 
-const throttleQueryRect = throttle(queryRect, 1000)
+const throttleQueryRect = throttle(queryRect, 1000, { trailing:true})
 Page({
   /**
    * 页面的初始数据

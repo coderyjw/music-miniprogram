@@ -95,7 +95,7 @@ Page({
   },
 
   handlePlayBtnClick: function() {
-    playerStore.dispatch("changeMusicPlayStatusAction")
+    playerStore.dispatch("changeMusicPlayStatusAction", !this.data.isPlaying)
   },
 
 
