@@ -20,7 +20,7 @@
         style="height: {{contentHeight}}px;"
         bindchange="handleSwiperChange">
   <swiper-item class="music">
-    <view class="album">
+    <view class="album album-anim"  style="animation-play-state: {{playAnimState}};">
       <image class="image" mode="widthFix" src="{{currentSong.al.picUrl}}"></image>
     </view>
     <view class="info">

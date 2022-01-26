@@ -21,6 +21,7 @@ Page({
 
     isPlaying: false,
     playingName: "pause",
+    playAnimState: "paused",
 
     playModeIndex: 0,
     playModeName: "order",
@@ -152,7 +153,8 @@ Page({
       if (isPlaying !== undefined) {
         this.setData({ 
           isPlaying,
-          playingName: isPlaying ? "pause": "resume" 
+          playingName: isPlaying ? "pause": "resume",
+          playAnimState: isPlaying ? "running": "paused" 
         })
       }
     })

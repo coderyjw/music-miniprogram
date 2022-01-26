@@ -51,10 +51,24 @@ page {
   align-items: center;
   flex: 5;
 }
+/* album动画 */
+@keyframes albumRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.album-anim {
+  animation: albumRotate 60s linear infinite;
+}
 
 .album .image {
   width: 100%;
-  border-radius: 12rpx;
+  border-radius: 100%;
 }
 
 /* 歌曲信息 */
