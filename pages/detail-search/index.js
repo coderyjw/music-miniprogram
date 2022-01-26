@@ -1,4 +1,5 @@
 // pages/detail-search/index.js
+import { playerStore } from '../../store/index'
 import { getSearchHot, getSearchSuggest, getSearchResult } from '../../service/api_search'
 import debounce from '../../utils/debounce'
 import stringToNodes from '../../utils/string2nodes'
@@ -79,5 +80,11 @@ Page({
 
     // 3.发送网络请求
     this.handleSearchAction()
+  },
+
+  handleSongItemClick: function(event) {
+    const index = event.currentTarget.dataset.index
+    playerStore.setState("playListSongs", this.data.resultSongs)
+    playerStore.setState("playListIndex", index) 
   }
 })

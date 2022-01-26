@@ -104,6 +104,8 @@ const playerStore = new HYEventStore({
       // 播放状态
       audioContext.onPlay(() => {
         ctx.isPlaying = true
+        ctx.isStoping = false
+
       })
       // 暂停状态
       audioContext.onPause(() => {
@@ -146,7 +148,6 @@ const playerStore = new HYEventStore({
           break
       }
 
-      console.log(index)
 
       // 3.获取歌曲
       let currentSong = ctx.playListSongs[index]
