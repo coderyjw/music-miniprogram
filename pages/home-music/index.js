@@ -17,28 +17,25 @@ Page({
     hotSongMenu: [],
     recommendSongMenu: [],
     recommendSongs: [],
-    rankings: { 0: {}, 2: {}, 3: {} }
+    rankings: { 0: {}, 2: {}, 3: {} },
+
+    currentSong: {},
+    isPlaying: false,
+    playAnimState: "paused"
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // 获取页面数据
     this.getPageData()
 
     // 发起共享数据的请求
     rankingStore.dispatch("getRankingDataAction")
 
     // 从store获取共享的数据
-    rankingStore.onState("hotRanking", (res) => {
-      if (!res.tracks) return
-      const recommendSongs = res.tracks.slice(0, 6)
-      this.setData({ recommendSongs })
-    })
-
-    rankingStore.onState("newRanking", this.getRankingHandler(0))
-    rankingStore.onState("originRanking", this.getRankingHandler(2))
-    rankingStore.onState("upRanking", this.getRankingHandler(3))
+    this.setupPlayerStoreListener()
   },
 
   getPageData() {
@@ -55,6 +52,34 @@ Page({
     getSongMenu("华语").then(res => {
       this.setData({ recommendSongMenu: res.playlists })
     })
+  },
+
+  setupPlayerStoreListener: function() {
+    playerStore.dispatch("playMusicWithSongIdAction", { id: 1842025914 })
+    // 1.排行榜监听
+    rankingStore.onState("hotRanking", (res) => {
+      if (!res.tracks) return
+      const recommendSongs = res.tracks.slice(0, 6)
+      this.setData({ recommendSongs })
+    })
+    rankingStore.onState("newRanking", this.getRankingHandler(0))
+    rankingStore.onState("originRanking", this.getRankingHandler(2))
+    rankingStore.onState("upRanking", this.getRankingHandler(3))
+
+    // 2.播放器监听
+    playerStore.onStates(["currentSong", "isPlaying"], ({currentSong, isPlaying}) => {
+      if (currentSong) this.setData({ currentSong })
+      if (isPlaying !== undefined) {
+        this.setData({ 
+          isPlaying, 
+          playAnimState: isPlaying ? "running": "paused" 
+        })
+      }
+    })
+  },
+  
+  handlePlayBtnClick: function() {
+    playerStore.dispatch("changeMusicPlayStatusAction", !this.data.isPlaying)
   },
 
   getRankingHandler: function(idx) {
