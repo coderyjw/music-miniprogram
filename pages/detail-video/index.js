@@ -1,6 +1,6 @@
 // pages/detail-video/index.js
 import { getMVUrl, getMVDetail, getMVRelateVideo } from '../../service/api_video'
-
+import { playerStore } from '../../store/index'
 Page({
 
   /**
@@ -28,6 +28,7 @@ Page({
   onLoad: function (options) {
     const id = options.id
 
+    playerStore.dispatch('changeMusicPlayStatusAction', false)
     this.getPageData(id)
   },
 

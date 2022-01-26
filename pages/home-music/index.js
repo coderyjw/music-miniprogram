@@ -54,8 +54,13 @@ Page({
     })
   },
 
+  handlePlayBarClick: function() {
+    wx.navigateTo({
+      url: '/pages/music-player/index?id=' + this.data.currentSong.id,
+    })
+  },
+
   setupPlayerStoreListener: function() {
-    playerStore.dispatch("playMusicWithSongIdAction", { id: 1842025914 })
     // 1.排行榜监听
     rankingStore.onState("hotRanking", (res) => {
       if (!res.tracks) return
