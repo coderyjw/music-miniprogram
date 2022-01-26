@@ -43,7 +43,7 @@
   "compileType": "miniprogram",
   "libVersion": "2.18.0",
   "appid": "wx52522b0cbabbb46b",
-  "projectname": "music",
+  "projectname": "music-miniprogram",
   "debugOptions": {
     "hidedInDevtools": []
   },

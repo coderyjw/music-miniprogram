@@ -1,4 +1,5 @@
 // pages/home-music/idnex.js
+import {  playerStore } from '../../store/index'
 import { getBanner, getSongMenu } from '../../service/api_music'
 import queryRect from '../../utils/query-select'
 import throttle from '../../utils/throttle'
@@ -93,6 +94,12 @@ Page({
     const idx = e.currentTarget.dataset.idx
     const rankingName = rankingMap[idx]
     this.navigateToDetailSongsPage(rankingName)
+  },
+
+  handleSongItemClick(event) {
+    const index = event.currentTarget.dataset.index
+    playerStore.setState("playListSongs", this.data.recommendSongs)
+    playerStore.setState("playListIndex", index) 
   },
 
   navigateToDetailSongsPage: function(rankingName) {

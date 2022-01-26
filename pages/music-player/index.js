@@ -84,7 +84,7 @@ Page({
   handleBackBtnClick: function() {
     wx.navigateBack()
   },
-
+  
   handleModeBtnClick: function() {
     // 计算最新的playModeIndex
     let playModeIndex = this.data.playModeIndex + 1
@@ -94,8 +94,16 @@ Page({
     playerStore.setState("playModeIndex", playModeIndex)
   },
 
+  handlePrevBtnClick: function() {
+    playerStore.dispatch("changeNewMusicAction", false)
+  },
+
   handlePlayBtnClick: function() {
     playerStore.dispatch("changeMusicPlayStatusAction", !this.data.isPlaying)
+  },
+
+  handleNextBtnClick: function() {
+    playerStore.dispatch("changeNewMusicAction")
   },
 
 
